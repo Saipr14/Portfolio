@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import useFetch from "./useFetch";
+import DueDate from "./DueDate";
+import useFetch from "../useFetch";
 
 const TaskDesc = () => {
     const { id } = useParams();
@@ -52,7 +53,7 @@ const TaskDesc = () => {
                     <div className="image"><img src="/sports_panel.jpg" alt="sports image" /></div>
                     <div className="task-title"><h2>{tasks.title}</h2></div>
                     <div className="task-desc"><p>Description: {tasks.desc}</p></div>
-                    <div className="task-date"><p>Due Date: {tasks.dueDate}</p></div>                    
+                    <div className="task-date"><p>Due Date: {<DueDate date= {tasks.dueDate} /> }</p></div>                    
                     <div className="delete">
                         <button onClick={removeTask}>Delete</button>
                         <button onClick={() => navi(`/editTask/${tasks.id}`)}>Edit</button>

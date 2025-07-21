@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import Home from "./Home";
-import TaskDesc from "./TaskDesc";
-import Navbar from "./Navbar";
-import NavbarPrime from "./NavbarPrime";
-import AddTask from "./AddTask";
-import PageNotFound from "./PageNotFound";
-import EditTask from "./EditTask";
-import Login from "./Login";
-import Logout from "./Logout";
+import Home from "./GlobalComponents/Home";
+import TaskDesc from "./TaskManagement/TaskDesc";
+import Navbar from "./GlobalComponents/Navbar";
+import NavbarPrime from "./GlobalComponents/NavbarPrime";
+import AddTask from "./TaskManagement/AddTask";
+import PageNotFound from "./GlobalComponents/PageNotFound";
+import EditTask from "./TaskManagement/EditTask";
+import Login from "./AuthPages/Login";
+import Logout from "./AuthPages/Logout";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -52,10 +52,9 @@ function App() {
           setSearchTerm={setSearchTerm}
           theme={theme}
           toggleTheme={toggleTheme}
-          onLogout={handleLogout}
         />
         <div className="overall">
-          <Navbar></Navbar>
+          <Navbar onLogout={handleLogout} />
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />} />
             <Route path="/addTask" element={<AddTask/>} />

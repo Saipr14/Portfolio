@@ -1,8 +1,8 @@
-const DueDate = ({ dueDate }) => {
-  if (!dueDate) return null;
+const DueDate = ({ date }) => {
+  if (!date) return null;
 
   const today = new Date();
-  const dDate = new Date(dueDate);
+  const dDate = new Date(date);
 
   // Normalize to midnight for date-only comparison
   const cleanToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -35,20 +35,10 @@ const DueDate = ({ dueDate }) => {
     });
   }
 
-  // 🎨 Color logic
-  let color = "inherit";
-  let label = "";
-  if (diffInDays < 0) {
-    color = "#b90000";
-    label = " (Overdue!)";
-  } else if (diffInDays <= 2) {
-    color = "#e67e22";
-    label = " (Due soon!)";
-  }
 
   return (
-    <span id="date-time" style={{ color, fontWeight: diffInDays < 0 ? "bold" : undefined }}>
-      {dateLabel}, {timeString}{label}
+    <span id="date-time" style={{fontWeight: diffInDays < 0 ? "bold" : undefined, border:"none" }}>
+      {dateLabel}, {timeString}
     </span>
   );
 };

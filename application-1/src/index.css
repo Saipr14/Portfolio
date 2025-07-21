@@ -33,9 +33,11 @@ h1, h2, h3, h4 {
 /* Main layout */
 .overall {
   display: flex;
+  height: 91.6vh;
   overflow: hidden;
   background: transparent;
 }
+/* Main layout */
 
 /* Sidebar styling */
 .navbar-above {
@@ -44,7 +46,7 @@ h1, h2, h3, h4 {
   height: 100%;
   overflow-y: auto;
   flex-shrink: 1;
-  padding: 1.5rem 1rem 1rem 0rem;
+  padding: 1.5rem 0rem ;
   transition: background .3s;
 }
 
@@ -90,14 +92,25 @@ h1, h2, h3, h4 {
   border-radius: 4%;
   box-shadow: 0 1px 8px 0 #ebc2b67c;
 }
+
 #addTaskBtn:hover {
   background: #ff653b;
   color: #fff;
 }
+
+.logout-button{
+  background: tomato;
+  color: #fff;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 8px;
+  margin-left: 8px;
+}
+
 /* Sidebar styling */
 
 
-/* Navbar brand */
+/* NavbarPrime and Some Navbar CSS */
 .navbar-brand{
   font-size: 1.7rem !important;
   font-weight: 900;
@@ -113,13 +126,13 @@ h1, h2, h3, h4 {
   background-image: none !important;
 }
 
-/* .navbar a,
-.navbar a:visited {
-  color: #e2dede;
-  padding: 6px;
-  text-decoration: none;
-  font-size: 1.1rem;
-} */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
 .brand-logo img{
   width: 44px;
@@ -153,7 +166,17 @@ h1, h2, h3, h4 {
   flex-grow: .7;
 }
 
-/* NavbarPrime and Some Navbar CSS */
+.prime form input[type="search"]{
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: .29em;
+  box-shadow: 0 2px 8px #5a7ef522;
+  border: 1.5px solid #e9e6e6;
+  padding-right: 95px;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  min-height: 3rem;
+}
 
 .prime input[type="search"] {
   background: #1b1f2e04;
@@ -163,6 +186,7 @@ h1, h2, h3, h4 {
   font-size: 1.1rem;
   transition: border .3s;
 }
+
 .prime input[type="search"]:focus {
   outline: none;
   border: 1.5px solid #e5542b;
@@ -175,19 +199,49 @@ h1, h2, h3, h4 {
 .prime button {
   cursor: pointer;
 }
+
+.prime button[type="button"], .toggle-theme-btn {
+  border: 1.3px solid #e5542b;
+  background: #e5542b13;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  transition: background .2s, color .2s;
+}
+
+.prime button[type="button"]:hover, .toggle-theme-btn:hover {
+  color: #fff;
+  background: #e5542b;
+}
+
+.prime .theme-button{
+  background: none;
+  color: inherit;
+  border: 1px solid #888;
+  margin: 0 12px;
+  padding: 2px 10px;
+  border-radius: 8px;
+}
+
+/* NavbarPrime and Some Navbar CSS */
+
 /* Home styles */
 .home {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   overflow-x: auto;
   scrollbar-width: none;
   border-radius: 20px;
-  flex-shrink: 1;
   flex-grow: 1;
   padding: 2rem;
   gap: 1rem;
-  flex-grow: 1; min-height: 0; overflow-x: auto;
+  min-height: 80%;
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  transition: height 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -197,9 +251,14 @@ h1, h2, h3, h4 {
 }
 
 .task-width {
-  position: sticky;
-  top: 0;
-  background:#0c0d16;
+  flex-shrink: 0;
+}
+
+.no-tasks {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tasks {
@@ -207,21 +266,27 @@ h1, h2, h3, h4 {
   color: rgb(216, 212, 212);
   border-radius: 3%;
   width: 100%;
-  min-height: 80%;
   max-width: 680px;
   min-width: 300px;
   margin-right: 1rem;
   flex-shrink: 0;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 80%;  
+  max-height: 70vh; 
+  overflow-y: auto;
   scrollbar-width: none;
+  transition: height 0.3s ease;
 }
 
 
 #date-time{
-  border: 1px solid grey;
-  padding: .3em;
-  border-radius: 12px;
+    padding: .3em;
+    border: 1px solid grey;
+    border-radius: 12px;
+    margin-left: 1rem;
 }
+/* Home styles */
 
 
 /* Input term styles */
@@ -230,7 +295,6 @@ h1, h2, h3, h4 {
   opacity: .75;
 }
 
-/* SEARCH INPUT styling */
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -251,40 +315,65 @@ h1, h2, h3, h4 {
 .input-wrapper input:focus {
   border: 1.5px solid #e5542b;
 }
+/* Input term styles */
+
+
 /* List preview styles */
 .list-preview, .title, .add {
   display: flex;
-  align-items: center;
-  padding: 13px 16px;
-  margin: 0 0 1.5em 0;
-  transition: background .2s;
+  padding: 1px 12px;
+  transition: background 0.2s;
   text-decoration: none !important;
+  flex-shrink: 0;
 }
 
+.title{
+  padding: 16px 13px;
+}
 
 .list-preview:hover {
   box-shadow: -8px 4px 17px -4px #13152712;
   background: #151725;
 }
+
 .list-preview h2 {
   color: #e5542b;
   justify-content: flex-start;
   font-size: 1.45rem;
 }
+
 .list-preview p {
   font-size: 1rem;
   margin-left: 19px;
   font-weight: 600;
   color: #444;
 }
+
+.list-items {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px 0;
+  transition: background 0.2s;
+}
+
+
+
+.list-items h2 {
+  margin: 0 1rem;
+}
+
 .list-items input[type="checkbox"] {
   margin-right: 10px;
   width: 1.2em;
   height: 1.2em;
+  border-radius: 100%;
 }
+
 .delete {
   margin-left: auto;
 }
+
 .delete button {
   padding:10px 12px;
   border-radius: 1.4rem;
@@ -295,6 +384,7 @@ h1, h2, h3, h4 {
   margin-left: 1rem;
   transition: border .2s, background .2s, color .2s;
 }
+
 .delete button:hover {
   border: 1.5px solid #444;
   background: #e5542b27;
@@ -481,6 +571,9 @@ h1, h2, h3, h4 {
   margin-bottom: 10px;
 }
 
+.task-date .date-time{
+  border: none;
+}
 /* Task description styles */
 
 
@@ -556,19 +649,5 @@ h1, h2, h3, h4 {
   .home { padding: 1.5rem 0.6rem; }
 }
 
-/* Extra polish for toggle/utility buttons */
-.prime button[type="button"], .toggle-theme-btn {
-  border: 1.3px solid #e5542b;
-  background: #e5542b13;
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  margin: 0 10px;
-  font-size: 1.2rem;
-  transition: background .2s, color .2s;
-}
-.prime button[type="button"]:hover, .toggle-theme-btn:hover {
-  color: #fff;
-  background: #e5542b;
-}
+
 
